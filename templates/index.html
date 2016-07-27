@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+    <h1>Maithili</h1>
+    <h3>ID-0528</h3>
+    <h3>Batch 10:30</h3>
+</div>
+
+<div class="row">
+    <form action="/upload" method="post" enctype="multipart/form-data">
+    <h3>File Upload </h3>
+        File:<input type="file" name="mypic"><br />
+        Subject:<input type="text" name="subject"><br />
+        Priority:<input type="text" name="priority"><br />
+        Upload: <input type="submit" name="Upload Photo" value="Upload Photo">
+    </form><br>
+
+</div>
+
+<div class="row">
+    <form action="/showlist" method="post" enctype="multipart/form-data">
+        <h3>Check Todo list </h3>
+        <label for="sel1">Sort by :</label>
+        <select name="category">
+            <option value="uploadtime" selected>Date</option>
+            <option value="priority">Priority</option>
+            <option value="subject">Subject</option>
+        </select>
+        <input type="submit" name="list" value="ToDoList">
+    </form><br>
+    </div>
+
+
+<div class="row">
+    <form action="/search" method="post" enctype="multipart/form-data">
+        <h3>Search Item </h3>
+        <input type="text" name="item">
+        <input type="submit" name="search" value="Search">
+    </form><br>
+</div>
+
+<div class="row">
+    <form action="/sort" method="post" enctype="multipart/form-data">
+        <label for="sel1">Sort by minutes :</label>
+        <input type="text" name="mins">
+        <input type="submit" name="sort" value="sort">
+    </form><br>
+</div>
+
+
+
+    {% endblock %}

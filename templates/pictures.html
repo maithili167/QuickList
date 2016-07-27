@@ -1,0 +1,54 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <h3>My List</h3>
+    <table>
+
+        {%  for i in images %}
+        <tr>
+            <!--<form action="/addcomment" method="post" enctype="multipart/form-data">-->
+                <td>
+            <br><br>
+                    <b>File content:</b><br>
+                    {% if i['filetype']=="text" %}
+                        {% set ival=i['filecont'] %}
+                             {{ ival }}<br>
+                    {% else %}
+                    {% set ival= i['filecont'].decode() %}
+                   
+
+                    <img alt="sample" height="200" width="200" src="data:image/jpg;base64,{{ ival }}"><br>
+                    {% endif %}
+                    
+                    {% set subject= i['subject'] %}
+                    <b>subject:</b>{{ subject }}<br>
+                    {% set priority= i['priority'] %}
+                    <b>priority:</b>{{ priority }}<br>
+                    {% set uploader=i['username'] %}
+                    <b>Uploader:</b> {{ uploader }}<br>
+                    {% set uploadtime=i['uploadtime'] %}
+                    <b>uploadtime:</b> {{ uploadtime }}<br>
+
+
+                </td>
+            <td>
+                {% set _id=i['_id'] %}
+                <a href="{{ url_for('remove',_id=_id)}}"> Remove</a>
+            </td>
+           
+            <!--</form>-->
+        </tr>
+        
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+{% endblock %}
